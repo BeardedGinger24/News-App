@@ -7,10 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.newsapp.model.NewsItem;
 import com.example.newsapp.utilities.NetworkUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String newsSearchResults) {
             super.onPostExecute(newsSearchResults);
-            mNewsJsonResults.setText(newsSearchResults);
+            ArrayList<NewsItem> testList = NetworkUtils.parseJson(newsSearchResults);
+            String test = testList.get(0).getAuthor();
+            mNewsJsonResults.setText(test);
         }
     }
 
