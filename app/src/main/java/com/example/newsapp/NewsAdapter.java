@@ -11,7 +11,7 @@ import com.example.newsapp.model.NewsItem;
 
 import java.util.ArrayList;
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ArticleViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsItemViewHolder> {
 
     //Context context;
     private ArrayList<NewsItem> articles;
@@ -29,20 +29,20 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ArticleViewHol
     }
 
     @Override
-    public ArticleViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public NewsItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         Context context = viewGroup.getContext();
-        int layoutIdForListItem = R.layout.list_item;
+        int layoutIdForListItem = R.layout.news_recyclerview;
         LayoutInflater inflater = LayoutInflater.from(context);
         boolean shouldAttachToParentImmediately = false;
 
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
-        ArticleViewHolder viewHolder = new ArticleViewHolder(view);
+        NewsItemViewHolder viewHolder = new NewsItemViewHolder(view);
 
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder( ArticleViewHolder articleViewHolder, int i) {
+    public void onBindViewHolder( NewsItemViewHolder articleViewHolder, int i) {
         articleViewHolder.bind(i);
     }
 
@@ -51,7 +51,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ArticleViewHol
         return articles.size();
     }
 
-    class ArticleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class NewsItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
 
         TextView mArticleTitle;
@@ -59,7 +59,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ArticleViewHol
         TextView mArticleDate;
 
 
-        public ArticleViewHolder(View itemView) {
+        public NewsItemViewHolder(View itemView) {
             super(itemView);
 
             mArticleTitle = (TextView) itemView.findViewById(R.id.tv_article_title);

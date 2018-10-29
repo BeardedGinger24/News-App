@@ -1,6 +1,5 @@
 package com.example.newsapp;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -10,11 +9,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 import com.example.newsapp.model.NewsItem;
+import com.example.newsapp.utilities.JsonUtils;
 import com.example.newsapp.utilities.NetworkUtils;
 
 import java.io.IOException;
@@ -73,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.ListI
         @Override
         protected void onPostExecute(String newsSearchResults) {
             super.onPostExecute(newsSearchResults);
-            articles = NetworkUtils.parseJson(newsSearchResults);
+            articles = JsonUtils.parseJson(newsSearchResults);
 
             mNewsAdapter = new NewsAdapter( articles, MainActivity.this);
             mNewsArticles.setAdapter(mNewsAdapter);
@@ -84,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements NewsAdapter.ListI
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.get_news, menu);
         return true;
     }
 
