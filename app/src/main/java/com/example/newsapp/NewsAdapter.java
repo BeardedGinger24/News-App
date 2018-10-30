@@ -70,9 +70,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsItemViewHo
         }
 
          void bind(int position){
-            mArticleTitle.setText(articles.get(position).getTitle());
-            mArticleDescription.setText(articles.get(position).getDescription());
-            mArticleDate.setText(articles.get(position).getPublishedAt());
+            mArticleTitle.setText("Title: " + articles.get(position).getTitle());
+            mArticleDescription.setText("Description: " +articles.get(position).getDescription());
+            mArticleDate.setText("Date: " + articles.get(position).getPublishedAt());
          }
 
         @Override
